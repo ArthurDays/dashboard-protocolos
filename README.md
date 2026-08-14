@@ -82,6 +82,14 @@ dashboard-protocolos/
 - [Publicação do Google Apps Script](google-apps-script/README.md)
 - [Migração para API REST e PostgreSQL](docs/api-migration.md)
 - [Testes e critérios de qualidade](docs/testing.md)
+- [Status e gates do Specsfy](docs/specsfy-status.md)
+- [Frontend e componentes](docs/frontend.md)
+- [Fluxos da aplicação](docs/flows.md)
+- [Integrações](docs/integrations.md)
+- [Banco de dados](docs/database.md)
+- [Decisões técnicas](docs/decisions.md)
+- [Especificação funcional](specs/draft/0001-dashboard-protocolos/spec.md)
+- [Backlog](specs/backlog/0001-dashboard-protocolos.md)
 
 ## Fluxo resumido
 
