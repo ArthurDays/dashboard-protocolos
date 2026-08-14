@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProtocolStatus {
+  RECEIVED
+  TRIAGE
+  FORWARDED
+  IN_ANALYSIS
+  PENDING
+  COMPLETED
+  CANCELLED
+  ARCHIVED
+}
+
+enum Priority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+model Unit {
+  id          String     @id @default(uuid())
+  code        String     @unique
+  name        String
+  active      Boolean    @default(true)
+  protocols   Protocol[]
+  movements   Movement[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Protocol {
+  id              String         @id @default(uuid())
+  source          String
+  externalId      String
+  protocolNumber  String?
+  processNumber   String?
+  entryDate       DateTime
+  sourceMonth     String
+  channel         String
+  documentType    String
+  interested      String
+  subject         String?
+  status          ProtocolStatus  @default(RECEIVED)
+  priority        Priority        @default(NORMAL)
+  dueAt           DateTime?
+  completedAt     DateTime?
+  unitId          String?
+  unit            Unit?           @relation(fields: [unitId], references: [id])
+  movements       Movement[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  @@unique([source, externalId])
+  @@index([entryDate])
+  @@index([sourceMonth])
+  @@index([status])
+  @@index([unitId])
+  @@index([documentType])
+}
+
+model Movement {
+  id          String        @id @default(uuid())
+  protocolId  String
+  protocol    Protocol      @relation(fields: [protocolId], references: [id], onDelete: Cascade)
+  fromStatus  ProtocolStatus?
+  toStatus    ProtocolStatus
+  fromUnitId  String?
+  toUnitId    String?
+  toUnit      Unit?         @relation(fields: [toUnitId], references: [id])
+  note        String?
+  actor       String?
+  occurredAt  DateTime      @default(now())
+
+  @@index([protocolId, occurredAt])
+}
+
+model SlaRule {
+  id           String   @id @default(uuid())
+  documentType String?
+  priority     Priority @default(NORMAL)
+  workingDays  Int
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([documentType, priority, active])
+}
+
+model Holiday {
+  id        String   @id @default(uuid())
+  date      DateTime @unique
+  name      String
+  createdAt DateTime @default(now())
+}
+
+model IngestionEvent {
+  id          String   @id @default(uuid())
+  source      String
+  externalId  String
+  payloadHash String
+  outcome     String
+  error       String?
+  createdAt   DateTime @default(now())
+
+  @@unique([source, externalId])
+  @@index([createdAt])
+}
