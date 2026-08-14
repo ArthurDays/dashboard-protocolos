@@ -103,3 +103,19 @@ terminal autorizado; rode `npm run lint` separadamente para validar o código.
 - Defina se interessados, assuntos e números de processo serão mascarados antes
   de publicar a planilha ou o endpoint.
 - Evite exportar CSV com dados pessoais para locais compartilhados.
+
+## Auditoria do repositório
+
+Auditoria realizada em 14/08/2026 no repositório GitHub do projeto:
+
+- nenhum `.env.local`, arquivo de planilha, CSV, log, token, chave privada ou
+  URL real do Apps Script foi publicado;
+- a árvore remota contém somente `.env.example` e arquivos de configuração
+  demonstrativos;
+- os nomes, assuntos e números presentes em `src/services/mockData.js` são
+  dados sintéticos para desenvolvimento, não uma cópia da planilha;
+- `POSTGRES_PASSWORD=protocolos` e `change-me-*` são placeholders locais e
+  devem ser substituídos por valores fortes antes de qualquer implantação;
+- o Secret Scanning do GitHub não está habilitado; a verificação foi realizada
+  por busca de padrões de credenciais no conteúdo atual e no histórico
+  publicado.
