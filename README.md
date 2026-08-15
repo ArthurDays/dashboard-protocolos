@@ -1,106 +1,157 @@
-# Dashboard de Protocolos
+# Protocol Intelligence
 
-Painel web de leitura para acompanhamento operacional de protocolos. O frontend
-consome o JSON consolidado do Google Apps Script, normaliza os registros no
-navegador e calcula indicadores, gráficos e filtros client-side.
+Plataforma de acompanhamento e triagem assistida de protocolos, construída com React, Fastify, PostgreSQL e uma arquitetura preparada para agentes de IA com supervisão humana.
 
-## Estado atual
+> O MVP agentic é determinístico, offline e utiliza somente dados simulados. Recomendações nunca alteram protocolos automaticamente.
 
-O módulo possui:
+## Visão do produto
 
-- carregamento por Google Apps Script, com preparação para API REST;
-- fallback para dados mock, cache local e modo degradado offline;
-- refresh manual e automático a cada 15 minutos;
-- filtro dinâmico por `Mes_Origem` e período personalizado;
-- filtros por canal e tipo de documento;
-- KPIs de volume, média diária e físico versus digital;
-- rosca de meios de entrada;
-- rankings de Top 5 tipos e unidades;
-- agrupamento `Outros` com modal de detalhamento;
-- busca, ordenação, paginação, detalhe e exportação CSV.
+Protocol Intelligence transforma um dashboard operacional em uma base de engenharia AI-native. O sistema consolida protocolos, calcula indicadores, acompanha SLA e oferece recomendações explicáveis de prioridade e roteamento.
 
-O módulo ainda não possui banco próprio, autenticação, API REST, SLA ou edição
-de protocolos. A evolução está descrita em
-[`docs/api-migration.md`](docs/api-migration.md).
+O fluxo mantém **human-in-the-loop** em todas as decisões:
 
-## Início rápido
+```mermaid
+flowchart LR
+  A[Protocolo] --> B[Validação e normalização]
+  B --> C[Agente de triagem simulado]
+  C --> D[Recomendação explicável]
+  D --> E{Revisão humana}
+  E -->|Aprovar| F[Decisão auditada]
+  E -->|Rejeitar| F
+  F --> G[Não aplicada automaticamente]
+```
+
+## Capacidades
+
+- dashboard responsivo com KPIs, filtros, gráficos, busca e exportação CSV;
+- central de triagem com fila, prioridades, confiança média e alertas;
+- recomendação estruturada de prioridade e unidade;
+- justificativas, confiança e guardrails visíveis;
+- trilha do agente: análise, recomendação, revisão humana e não execução;
+- API REST Fastify protegida por chaves separadas de leitura e operação;
+- persistência PostgreSQL com Prisma e ingestão idempotente;
+- cálculo de SLA em dias úteis;
+- fallback para Google Sheets, dados mock e cache local;
+- CI independente para frontend e backend.
+
+## Guardrails de IA
+
+- campos do protocolo são tratados como dados não confiáveis;
+- instruções inseridas no assunto não controlam o agente;
+- o provider MVP não acessa rede nem modelos externos;
+- toda recomendação nasce como `PENDING`;
+- aprovação ou rejeição exige ação humana;
+- dupla decisão é recusada;
+- nenhuma chave operacional é incluída no bundle frontend;
+- a interface identifica claramente toda simulação.
+
+## Arquitetura
+
+```text
+React / Vite
+  ├─ Dashboard, filtros e visualizações
+  ├─ Central de triagem agentic
+  └─ Demonstração local segura
+              │
+              ▼
+Fastify / TypeScript
+  ├─ Protocolos, KPIs e SLA
+  ├─ Ingestão e movimentações
+  └─ Recomendações e decisões auditáveis
+              │
+              ▼
+Prisma / PostgreSQL
+```
+
+| Camada | Tecnologias |
+| --- | --- |
+| Frontend | React 19, Vite 8, Chart.js |
+| Backend | Node.js, TypeScript, Fastify |
+| Dados | PostgreSQL, Prisma |
+| Qualidade | Node Test Runner, Vitest, Oxlint, GitHub Actions |
+| Operação | Docker Compose, Nginx, Pino |
+| Integração legada | Google Apps Script / Sheets |
+
+## Início rápido — demonstração frontend
 
 ```bash
 npm install
 npm run dev
 ```
 
-Acesse `http://127.0.0.1:5173/`.
+Acesse `http://127.0.0.1:5173`. Sem configuração externa, o sistema usa dados simulados.
 
-| Comando | Uso |
-| --- | --- |
-| `npm run dev` | Servidor local com hot reload |
-| `npm run build` | Bundle de produção em `dist/` |
-| `npm run preview` | Servir o bundle de produção |
-| `npm test` | Testes nativos do contrato e agregações |
-| `npm run lint` | Verificar o código com Oxlint |
+## Stack completa com Docker
 
-## Configuração
-
-Copie `.env.example` para `.env.local`:
-
-```env
-VITE_SHEETS_URL=https://script.google.com/macros/s/SEU_SCRIPT_ID/exec
-VITE_PROTOCOLS_API_URL=
-VITE_PROTOCOLS_API_KEY=
+```bash
+docker compose up --build
 ```
 
-`VITE_PROTOCOLS_API_URL`, quando preenchida, tem precedência sobre
-`VITE_SHEETS_URL`. `VITE_PROTOCOLS_API_KEY` é enviada como `x-api-key` para a
-API de leitura. Assim, a fonte pode migrar para uma API sem alterar os
-componentes da interface.
+- Frontend: `http://127.0.0.1:8080`
+- API: `http://127.0.0.1:3333/api/health`
+- PostgreSQL: `localhost:5432`
 
-Não commite `.env.local` nem URLs privadas. O arquivo é ignorado pelo
-`.gitignore` central.
+As credenciais do `docker-compose.yml` são apenas defaults locais. Substitua-as antes de qualquer ambiente compartilhado.
+
+## Comandos de qualidade
+
+```bash
+npm test
+npm run lint
+npm run build
+
+cd backend
+npm test
+npm run build
+npm run db:generate
+```
+
+## API de triagem
+
+| Método | Rota | Responsabilidade |
+| --- | --- | --- |
+| `POST` | `/api/protocolos/:id/triagens` | Gerar recomendação pendente |
+| `GET` | `/api/protocolos/:id/triagens` | Consultar histórico |
+| `POST` | `/api/triagens/:id/decisao` | Aprovar ou rejeitar uma vez |
+
+As rotas operacionais não devem ser chamadas diretamente pelo browser com uma chave privilegiada.
 
 ## Estrutura
 
 ```text
-dashboard-protocolos/
-├── google-apps-script/       # endpoint de leitura da planilha
-├── backend/                   # API Fastify + Prisma + PostgreSQL
-├── src/components/            # interface e visualizações
-├── src/context/               # estado, refresh e filtros
-├── src/hooks/                 # KPIs e agregações
-├── src/services/              # fontes e contrato de dados
-├── src/utils/                 # processamento reutilizável
-├── docs/                      # documentação técnica e operacional
-├── .env.example
-└── package.json
+backend/                 API, domínio, Prisma e testes Vitest
+src/components/          dashboard e experiência agentic
+src/services/            contratos, fontes e provider simulado
+tests/                   testes do frontend e regras puras
+google-apps-script/      adaptador transitório do Sheets
+docs/                    documentação técnica reconstruível
+specs/                   especificações e evidências Specsfy
+.github/workflows/       CI do frontend e backend
 ```
 
 ## Documentação
 
+- [Portal técnico](docs/README.md)
 - [Arquitetura](docs/architecture.md)
-- [Contrato de dados](docs/data-contract.md)
-- [Operação e troubleshooting](docs/operations.md)
-- [Publicação do Google Apps Script](google-apps-script/README.md)
-- [Migração para API REST e PostgreSQL](docs/api-migration.md)
-- [Testes e critérios de qualidade](docs/testing.md)
-- [Status e gates do Specsfy](docs/specsfy-status.md)
-- [Frontend e componentes](docs/frontend.md)
-- [Fluxos da aplicação](docs/flows.md)
-- [Integrações](docs/integrations.md)
+- [Fluxos](docs/flows.md)
 - [Banco de dados](docs/database.md)
-- [Decisões técnicas](docs/decisions.md)
-- [Especificação funcional](specs/draft/0001-dashboard-protocolos/spec.md)
-- [Backlog](specs/backlog/0001-dashboard-protocolos.md)
+- [Testes](docs/testing.md)
+- [Operações](docs/operations.md)
+- [Especificação da triagem agentic](specs/defined/0002-triagem-agentic-de-protocolos/spec.md)
 
-## Fluxo resumido
+## Roadmap
 
-```text
-Google Sheets / API REST → fetchSheetData()
-→ validação e normalização → DashboardContext
-→ filtros client-side → KPIs, gráficos, tabela, modal e CSV
-```
+- [x] Provider simulado e substituível
+- [x] Recomendações explicáveis
+- [x] Aprovação humana auditável
+- [x] Central de triagem e trilha do agente
+- [x] CI de frontend e backend
+- [ ] Autenticação institucional e autorização por recurso
+- [ ] Integração segura entre frontend e API operacional
+- [ ] Avaliações de qualidade do agente
+- [ ] Provider externo com timeout, fallback e controle de custo
+- [ ] RAG sobre documentos autorizados e sanitizados
 
-## Privacidade
+## Privacidade e segurança
 
-O painel pode exibir interessado, assunto e números de processo. A publicação
-do Apps Script como “qualquer pessoa” deve ser usada apenas em protótipo. Em
-produção, adote autenticação, autorização, mascaramento e auditoria.
+Protocolos podem conter dados pessoais. Não use dados reais na demonstração, não publique arquivos `.env` e não exponha chaves privadas em variáveis `VITE_*`. Antes de uso institucional, implemente autenticação, autorização, mascaramento, retenção e auditoria compatíveis com o ambiente.
