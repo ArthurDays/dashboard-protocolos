@@ -29,6 +29,7 @@ Relação: relaciona cada arquivo observado à sua superfície.
 | Componentes | src/components/ProtocolDetailModal.jsx | ProtocolDetailModal |
 | Componentes | src/components/RankingBarChart.jsx | COLORS, RankingBarChart |
 | Componentes | src/components/RecentTable.jsx | PAGE_SIZE_OPTIONS, UNIDADE_COLORS, RecentTable, updateQuery, updatePageSize, exportCsv |
+| Componentes | src/components/TriageCenter.jsx | TriageCenter |
 | Componentes | src/components/UnitChart.jsx | UnitChart |
 | Outras fontes | src/context/DashboardContext.jsx | REFRESH_INTERVAL_MS, reducer, DashboardProvider |
 | Outras fontes | src/context/dashboardContextValue.js | DashboardContext |
@@ -39,7 +40,7 @@ Relação: relaciona cada arquivo observado à sua superfície.
 | Serviços | src/services/mockData.js | CANAIS, TIPOS, UNIDADES, INTERESSADOS, ASSUNTOS, randomItem, randomInt, padZero |
 | Serviços | src/services/protocolContract.js | PROTOCOL_CONTRACT_VERSION, PROTOCOL_FIELDS, extractProtocolRows, validateProtocolPayload, protocolToExportRow |
 | Serviços | src/services/sheetsService.js | SHEETS_URL, API_URL, API_KEY, DATA_URL, USE_MOCK, CACHE_KEY, findMatchingColumn, REQUIRED_COLUMNS |
-| Serviços | src/services/triageDemo.js | createDemoRecommendation, decideDemoRecommendation |
+| Serviços | src/services/triageDemo.js | createDemoRecommendation, decideDemoRecommendation, summarizeTriageQueue |
 | Outras fontes | src/utils/chartData.js | aggregateTopN, aggregateObjectTopN |
 | Outras fontes | src/utils/filtering.js | toDayKey, monthRange, filterProtocols |
 | Testes | tests/chartData.test.js | — |
