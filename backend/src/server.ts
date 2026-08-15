@@ -6,8 +6,9 @@ import { createHash } from 'node:crypto';
 import { config } from './config.js';
 import { requireIngestKey, requireReadKey } from './auth.js';
 import { prisma } from './prisma.js';
-import { Priority, ProtocolStatus } from '@prisma/client';
+import { Priority, ProtocolStatus, TriageDecision as PrismaTriageDecision } from '@prisma/client';
 import { calculateDueAt } from './sla.js';
+import { createSimulatedTriage } from './triage.js';
 
 const app = Fastify({ logger: { level: process.env.LOG_LEVEL || 'info' } });
 const metrics = { startedAt: new Date().toISOString(), requests: 0, responses: 0, errors: 0 };
@@ -100,6 +101,62 @@ app.get('/api/protocolos/:id', { preHandler: requireReadKey }, async (request, r
   const protocol = await prisma.protocol.findUnique({ where: { id }, include: { unit: true } });
   if (!protocol) return reply.code(404).send({ error: 'not_found', message: 'Protocolo não encontrado.' });
   return protocolJson(protocol);
+});
+
+app.post('/api/protocolos/:id/triagens', { preHandler: requireReadKey }, async (request, reply) => {
+  const { id } = request.params as { id: string };
+  const protocol = await prisma.protocol.findUnique({ where: { id }, include: { unit: true } });
+  if (!protocol) return reply.code(404).send({ error: 'not_found', message: 'Protocolo não encontrado.' });
+
+  const recommendation = createSimulatedTriage({
+    id: protocol.id,
+    documentType: protocol.documentType,
+    subject: protocol.subject,
+    channel: protocol.channel,
+    priority: protocol.priority,
+    unitCode: protocol.unit?.code ?? null,
+  });
+  const created = await prisma.triageRecommendation.create({
+    data: {
+      protocolId: protocol.id,
+      priority: recommendation.priority,
+      suggestedUnit: recommendation.suggestedUnit,
+      confidence: recommendation.confidence,
+      rationale: recommendation.rationale,
+      alerts: recommendation.alerts,
+      provider: recommendation.provider,
+      providerVersion: recommendation.providerVersion,
+    },
+  });
+  return reply.code(201).send(created);
+});
+
+app.get('/api/protocolos/:id/triagens', { preHandler: requireReadKey }, async (request, reply) => {
+  const { id } = request.params as { id: string };
+  const exists = await prisma.protocol.count({ where: { id } });
+  if (!exists) return reply.code(404).send({ error: 'not_found', message: 'Protocolo não encontrado.' });
+  return prisma.triageRecommendation.findMany({ where: { protocolId: id }, orderBy: { createdAt: 'desc' } });
+});
+
+app.post('/api/triagens/:id/decisao', { preHandler: requireIngestKey }, async (request, reply) => {
+  const { id } = request.params as { id: string };
+  const body = request.body as { decision?: string; actor?: string; note?: string };
+  const decision = body?.decision as PrismaTriageDecision;
+  const actor = body?.actor?.trim();
+  const validDecision = decision === PrismaTriageDecision.APPROVED || decision === PrismaTriageDecision.REJECTED;
+  if (!validDecision || !actor) {
+    return reply.code(400).send({ error: 'invalid_decision', message: 'decision e actor válidos são obrigatórios.' });
+  }
+  const exists = await prisma.triageRecommendation.count({ where: { id } });
+  if (!exists) return reply.code(404).send({ error: 'not_found', message: 'Recomendação não encontrada.' });
+
+  const decidedAt = new Date();
+  const updated = await prisma.triageRecommendation.updateMany({
+    where: { id, decision: PrismaTriageDecision.PENDING },
+    data: { decision, decidedBy: actor, decidedAt, decisionNote: body.note?.trim() || null },
+  });
+  if (updated.count === 0) return reply.code(409).send({ error: 'already_decided', message: 'A recomendação já possui decisão.' });
+  return prisma.triageRecommendation.findUnique({ where: { id } });
 });
 
 app.get('/api/protocolos/:id/movimentacoes', { preHandler: requireReadKey }, async (request) => {

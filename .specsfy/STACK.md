@@ -8,8 +8,10 @@ uma. Preserve decisões humanas nas seções livres deste arquivo.
 <!-- specsfy:stack:start -->
 | Camada | Tecnologia | Evidência |
 | --- | --- | --- |
-| Biblioteca | React | `package.json` |
+| Biblioteca | React | `package.json` (`react`) |
 | Runtime | Node.js | `package.json` |
+| Infraestrutura | Containers | arquivo Compose |
+| Biblioteca | React | `package.json` |
 | Build | Vite | `package.json`, `vite.config.js` |
 | Gráficos | Chart.js/react-chartjs-2 | `package.json`, `src/components/` |
 | API | Fastify + TypeScript | `backend/package.json`, `backend/src/server.ts` |
