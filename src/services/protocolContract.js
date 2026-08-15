@@ -39,3 +39,9 @@ export function protocolToExportRow(protocol) {
     Assunto: protocol.assunto || '',
   };
 }
+
+export function escapeCsvCell(value) {
+  const raw = String(value ?? '');
+  const neutralized = /^[=+\-@\t\r]/.test(raw) ? `'${raw}` : raw;
+  return `"${neutralized.replaceAll('"', '""')}"`;
+}

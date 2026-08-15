@@ -4,7 +4,7 @@
 |---|---|
 | Origem | Google Sheets fornecido pelo usuário |
 | Documento | Caderno de Entrada 2026 |
-| URL | https://docs.google.com/spreadsheets/d/1KU6gNNDxmpBtjXHSrunT_yk6za0kYetEpTBwBOWKnak/edit |
+| URL | Removida da documentação pública; recurso institucional restrito |
 | Data de consulta | 2026-08-14 |
 | Finalidade | Confirmar abas e cabeçalhos do contrato de entrada |
 

@@ -15,7 +15,6 @@ import { validateProtocolPayload } from './protocolContract';
 
 const SHEETS_URL = import.meta.env.VITE_SHEETS_URL || '';
 const API_URL = import.meta.env.VITE_PROTOCOLS_API_URL || '';
-const API_KEY = import.meta.env.VITE_PROTOCOLS_API_KEY || '';
 const DATA_URL = API_URL || SHEETS_URL;
 const USE_MOCK = !DATA_URL;
 const CACHE_KEY = 'dashboard_protocolos_cache';
@@ -285,7 +284,7 @@ export async function buscarDadosPlanilha() {
   }
 
   try {
-    const response = await fetch(URL_PLANILHA_UNIFICADA, { headers: API_URL ? { 'x-api-key': API_KEY } : {} });
+    const response = await fetch(URL_PLANILHA_UNIFICADA);
     if (!response.ok) {
       throw new Error(`Erro na requisição: ${response.statusText}`);
     }
@@ -316,7 +315,7 @@ export async function fetchSheetData() {
   }
 
   try {
-    const response = await fetch(DATA_URL, { headers: API_URL ? { 'x-api-key': API_KEY } : {} });
+    const response = await fetch(DATA_URL);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }

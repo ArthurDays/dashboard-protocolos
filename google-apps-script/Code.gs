@@ -5,6 +5,12 @@
  * e consolida todas as linhas em um único JSON retornado para o dashboard.
  */
 
+const EXPORTED_HEADERS = new Set([
+  'Data', 'Canal de Entrada', 'Canal', 'Tipo de Documento', 'Interessado',
+  'Assunto', 'Unidade', 'Número e-Protocolo', 'Número do Processo',
+  'Nº e-Protocolo', 'Nº Processo', 'Status', 'Prioridade',
+]);
+
 function doGet(e) {
   try {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -21,7 +27,8 @@ function doGet(e) {
       const data = sheet.getDataRange().getValues();
       if (data.length <= 1) return; // Vazia ou apenas cabeçalho
 
-      const headers = data[0].map((h) => String(h).trim());
+      const sourceHeaders = data[0].map((h) => String(h).trim());
+      const headers = sourceHeaders.filter((header) => EXPORTED_HEADERS.has(header));
       if (allHeaders.length === 0) {
         allHeaders = headers;
       }
@@ -31,8 +38,9 @@ function doGet(e) {
         const obj = { _aba: sheetName, Mes_Origem: sheetName.trim().toUpperCase() };
         let hasAnyValue = false;
 
-        headers.forEach((header, j) => {
-          let value = row[j];
+        headers.forEach((header) => {
+          const columnIndex = sourceHeaders.indexOf(header);
+          let value = row[columnIndex];
           if (value instanceof Date) {
             const d = String(value.getDate()).padStart(2, '0');
             const m = String(value.getMonth() + 1).padStart(2, '0');

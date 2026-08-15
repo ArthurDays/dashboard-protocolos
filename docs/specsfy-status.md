@@ -21,7 +21,7 @@ Atualizado em 2026-08-14.
   `specs/draft/0001-dashboard-protocolos/research/`.
 - O Apps Script lê abas visíveis e acrescenta `_aba` e `Mes_Origem`.
 - A implantação do Web App foi atualizada para a versão 4 em 14/08/2026,
-  mantendo a URL da implantação ativa e acesso público conforme a decisão do
+  mantendo a URL da implantação fora do repositório e acesso restrito conforme a decisão do
   produto de não exigir autenticação no dashboard.
 - O frontend deriva os meses do payload, filtra client-side e agrega gráficos
   em Top 5 + `Outros`.

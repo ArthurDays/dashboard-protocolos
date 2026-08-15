@@ -26,8 +26,8 @@ Endpoints principais:
 - `POST /api/ingestao/protocolos`
 
 Use `x-api-key` para leitura (`READ_API_KEY`) e ingestão
-(`INGEST_API_KEY`). Em desenvolvimento, chaves vazias deixam a API aberta;
-isso não deve ser usado em produção.
+(`INGEST_API_KEY`). As duas chaves são obrigatórias e devem ser diferentes; a
+API recusa a inicialização quando a configuração é insegura.
 
 ## Banco
 
