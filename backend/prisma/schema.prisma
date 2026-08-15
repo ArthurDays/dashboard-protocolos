@@ -25,6 +25,12 @@ enum Priority {
   URGENT
 }
 
+enum TriageDecision {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model Unit {
   id          String     @id @default(uuid())
   code        String     @unique
@@ -55,6 +61,7 @@ model Protocol {
   unitId          String?
   unit            Unit?           @relation(fields: [unitId], references: [id])
   movements       Movement[]
+  triageRecommendations TriageRecommendation[]
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
 
@@ -64,6 +71,28 @@ model Protocol {
   @@index([status])
   @@index([unitId])
   @@index([documentType])
+}
+
+model TriageRecommendation {
+  id              String         @id @default(uuid())
+  protocolId      String
+  protocol        Protocol       @relation(fields: [protocolId], references: [id], onDelete: Cascade)
+  priority        Priority
+  suggestedUnit   String
+  confidence      Float
+  rationale       Json
+  alerts          Json
+  provider        String
+  providerVersion String
+  decision        TriageDecision @default(PENDING)
+  decidedBy       String?
+  decidedAt       DateTime?
+  decisionNote    String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@index([protocolId, createdAt])
+  @@index([decision])
 }
 
 model Movement {

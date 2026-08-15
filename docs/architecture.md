@@ -63,55 +63,22 @@ explica a composição de `Outros` sem poluir a visão principal.
 - Filtros não alteram `todosProtocolos`; criam `protocolosFiltrados`.
 
 <!-- specsfy:documentator:start -->
-## Contexto arquitetural
+## Componentes
 
-- Frameworks e superfícies observadas: React.
-- A topologia abaixo é inferida de manifests e caminhos; confirme limites não
-  expressos no código.
+| Tipo | Quantidade |
+| --- | --- |
+| Código | 35 |
+| Testes | 3 |
+
+## Diagramas
 
 ```mermaid
-flowchart LR
-  Human[Pessoa usuária] --> UI[Interface / API]
-  Agent[Agente de código] --> Docs[docs/]
-  UI --> App[Aplicação]
-  App --> Database[Persistência]
-  App --> Integrations[Integrações externas]
-  Docs --> App
+flowchart TD
+  Application[Aplicação]
 ```
-
-## UML de componentes implementados
 
 ```mermaid
 classDiagram
-  class mockData
-  class protocolContract
-  class sheetsService
-  class BarChart
-  class DonutChart
-  class ErrorScreen
-  class FilterBar
-  class Header
-  class KPICards
-  class OtherItemsModal
-  class ProtocolDetailModal
-  class RankingBarChart
-  class RecentTable
-  class UnitChart
+  class Application
 ```
-
-## Evidência por camada
-
-| Camada | Quantidade | Exemplos |
-| --- | --- | --- |
-| Controllers | 0 | — |
-| Models | 0 | — |
-| Serviços | 3 | `src/services/mockData.js`, `src/services/protocolContract.js`, `src/services/sheetsService.js` |
-| Jobs | 0 | — |
-| Policies | 0 | — |
-| Rotas e APIs | 0 | — |
-| Views | 0 | — |
-| Páginas | 0 | — |
-| Componentes | 11 | `src/components/BarChart.jsx`, `src/components/DonutChart.jsx`, `src/components/ErrorScreen.jsx`, `src/components/FilterBar.jsx`, `src/components/Header.jsx` |
-| Testes | 2 | `tests/chartData.test.js`, `tests/protocolContract.test.js` |
-| Outras fontes | 14 | `backend/src/auth.ts`, `backend/src/config.ts`, `backend/src/prisma.ts`, `backend/src/server.ts`, `backend/src/sla.ts` |
 <!-- specsfy:documentator:end -->

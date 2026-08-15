@@ -6,6 +6,8 @@ O projeto nasceu para consolidar a consulta do serviço de protocolo, cujos
 registros ficam distribuídos em abas mensais de uma planilha Google Sheets.
 Evoluiu de um painel React de leitura para uma solução com Apps Script,
 fallback local, Docker e backend Fastify/PostgreSQL preparado para migração.
+O primeiro módulo Protocol Intelligence acrescenta triagem assistida por um
+provider simulado e substituível, sempre subordinada à decisão humana.
 
 ## Finalidade
 
@@ -22,12 +24,16 @@ deploy e observabilidade.
 
 O painel carrega JSON consolidado, normaliza registros, calcula KPIs, mantém
 filtros client-side, exibe gráficos Top 5 + Outros, permite detalhamento em
-modal, pagina a tabela, exporta CSV e usa cache em falha de rede.
+modal, pagina a tabela, exporta CSV e usa cache em falha de rede. O backend
+também gera recomendações estruturadas de triagem, mantém seu histórico e
+registra aprovação ou rejeição auditável.
 
 ## Limites
 
 O painel atual não edita protocolos, não define SLA institucional, não possui
-autenticação própria e ainda não tornou a API PostgreSQL a fonte oficial.
+autenticação própria e ainda não tornou a API PostgreSQL a fonte oficial. A
+triagem MVP usa somente regras e dados simulados, não acessa modelos externos e
+nunca aplica automaticamente prioridade, unidade ou status recomendados.
 
 ## Contexto técnico
 

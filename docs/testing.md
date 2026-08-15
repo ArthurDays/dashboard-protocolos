@@ -73,31 +73,15 @@ Library para filtros e componentes. Depois adicionar E2E com fixture controlada
 para o fluxo mês → período → tabela → detalhe → CSV.
 
 <!-- specsfy:documentator:start -->
-## Runner e comandos
+## Resumo
 
-- Runner observado: **Node Test ou runner definido no projeto**
+- Arquivos de teste: 3.
+- Runner: não identificado.
+- Scripts: dev: vite; build: vite build; test: node --test; lint: oxlint; preview: vite preview.
 
-| Comando | Origem |
-| --- | --- |
-| `npm run test  # node --test` | manifest ou padrão do framework |
-
-## Resumo dos testes
-
-| Classe | Quantidade |
-| --- | --- |
-| Outros | 2 |
-
-## Inventário
-
-| Teste | Caminho |
-| --- | --- |
-| chartData.test | `tests/chartData.test.js` |
-| protocolContract.test | `tests/protocolContract.test.js` |
-
-## Guia
-
-1. Executar primeiro o teste focal da mudança.
-2. Executar a suíte relacionada e depois a regressão completa.
-3. Registrar RED/GREEN e comandos na spec quando o projeto usar Specsfy.
-4. Não considerar erro de ambiente ou fixture como RED válido.
+| Arquivo |
+| --- |
+| backend\src\triage.test.ts |
+| tests\chartData.test.js |
+| tests\protocolContract.test.js |
 <!-- specsfy:documentator:end -->

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "skills": {
+    "specsfy-01-inbox": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-01-inbox/SKILL.md",
+      "computedHash": "c109925b3839267b01c19d8ad70e44831f4a7bb0ba21a98806e329a210a42416"
+    },
+    "specsfy-02-backlog": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-02-backlog/SKILL.md",
+      "computedHash": "ca5e38a2fc7b22a033ad08b9cdaea3c4c887af300a0c834c5aa9f8e28077c7b6"
+    },
+    "specsfy-03-specify": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-03-specify/SKILL.md",
+      "computedHash": "1f0536112d7287d64594d74fdcaef24e2b578904cd611e8e3cd691a56120e94e"
+    },
+    "specsfy-04-validate": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-04-validate/SKILL.md",
+      "computedHash": "42817cbe85505dee6caea92339cd5c2f2f7222fc7722b8c0f8ec4d7782d3925c"
+    },
+    "specsfy-05-tasks": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-05-tasks/SKILL.md",
+      "computedHash": "d06671ef36830c1d662cc45b1913d4b888c37f51fa8caa0085eb9c9f160413c6"
+    },
+    "specsfy-06-tdd-bdd": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-06-tdd-bdd/SKILL.md",
+      "computedHash": "b138da2993a3818136b02948278333447c662c9d407fdb6f7190f082b4fb399d"
+    },
+    "specsfy-07-implement": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-07-implement/SKILL.md",
+      "computedHash": "19345b4f03131b0fe096b6e5bcd9c65e2b55d3b553986013accb2fe289f7fa17"
+    },
+    "specsfy-aux-database": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-aux-database/SKILL.md",
+      "computedHash": "457e8e4afbdba970503dc5ede4225a58f251a65676c2a00c7461b636d962f465"
+    },
+    "specsfy-aux-rules": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-aux-rules/SKILL.md",
+      "computedHash": "fb37e2a8ed3ac023e2a4a5cfd83cdc5354f72da15e12723a7ac79bc8c671487f"
+    },
+    "specsfy-aux-stack": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-aux-stack/SKILL.md",
+      "computedHash": "251ef55fda4c02edec0330feacf75a8ce46dcf6c9de8c37763ff9a5e01a67cea"
+    },
+    "specsfy-documentator": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-documentator/SKILL.md",
+      "computedHash": "3fff5611fb6e267cb07fb2bc8524b1092ffc155bb6c8c9f8c974965ce050f8d6"
+    },
+    "specsfy-progress": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-progress/SKILL.md",
+      "computedHash": "0ffc9219f546ab0fd23eb69764376ab13c0a8a2ce38804be1c16b4600b555a30"
+    },
+    "specsfy-setup": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-setup/SKILL.md",
+      "computedHash": "9a906785f7ddc35ca8bee760568151ae6b66a0af9710f4a56bdc61a98842cce7"
+    },
+    "specsfy-update-spec": {
+      "source": "promovaweb/specsfy",
+      "sourceType": "github",
+      "skillPath": "skills/specsfy-update-spec/SKILL.md",
+      "computedHash": "2cc8f091a2ea542c959b472504edcaf9f33c4168943311ec2dee81a76ed8a5a5"
+    }
+  }
+}

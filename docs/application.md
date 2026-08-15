@@ -1,51 +1,47 @@
 # Aplicação e implementações
 
 <!-- specsfy:documentator:start -->
-## Inventário implementado
+## Superfícies
 
-O inventário inclui código anterior à adoção do Specsfy e mudanças recentes.
-Nomes representam símbolos ou arquivos observados, não responsabilidades
-inventadas.
+Categorias: Serviços, Rotas e APIs, Páginas, Componentes, Testes e Outras fontes.
 
-| Tipo | Implementação | Fonte |
+Relação: relaciona cada arquivo observado à sua superfície.
+
+| Categoria | Arquivo | Símbolos |
 | --- | --- | --- |
-| Serviços | mockData | `src/services/mockData.js` |
-| Serviços | protocolContract | `src/services/protocolContract.js` |
-| Serviços | sheetsService | `src/services/sheetsService.js` |
-| Componentes | BarChart | `src/components/BarChart.jsx` |
-| Componentes | DonutChart | `src/components/DonutChart.jsx` |
-| Componentes | ErrorScreen | `src/components/ErrorScreen.jsx` |
-| Componentes | FilterBar | `src/components/FilterBar.jsx` |
-| Componentes | Header | `src/components/Header.jsx` |
-| Componentes | KPICards | `src/components/KPICards.jsx` |
-| Componentes | OtherItemsModal | `src/components/OtherItemsModal.jsx` |
-| Componentes | ProtocolDetailModal | `src/components/ProtocolDetailModal.jsx` |
-| Componentes | RankingBarChart | `src/components/RankingBarChart.jsx` |
-| Componentes | RecentTable | `src/components/RecentTable.jsx` |
-| Componentes | UnitChart | `src/components/UnitChart.jsx` |
-| Testes | chartData.test | `tests/chartData.test.js` |
-| Testes | protocolContract.test | `tests/protocolContract.test.js` |
-| Outras fontes | auth | `backend/src/auth.ts` |
-| Outras fontes | config | `backend/src/config.ts` |
-| Outras fontes | prisma | `backend/src/prisma.ts` |
-| Outras fontes | server | `backend/src/server.ts` |
-| Outras fontes | sla | `backend/src/sla.ts` |
-| Outras fontes | App | `src/App.jsx` |
-| Outras fontes | DashboardContext | `src/context/DashboardContext.jsx` |
-| Outras fontes | dashboardContextValue | `src/context/dashboardContextValue.js` |
-| Outras fontes | useDashboard | `src/hooks/useDashboard.js` |
-| Outras fontes | useKPIs | `src/hooks/useKPIs.js` |
-| Outras fontes | main | `src/main.jsx` |
-| Outras fontes | chartData | `src/utils/chartData.js` |
-| Outras fontes | filtering | `src/utils/filtering.js` |
-| Outras fontes | vite.config | `vite.config.js` |
-
-## Mapa de responsabilidades
-
-| Área | Leitura recomendada |
-| --- | --- |
-| Controllers e APIs | Entradas HTTP, validação e orquestração |
-| Models e entidades | Estado persistente, relações e invariantes |
-| Serviços e jobs | Casos de uso, integrações e processamento assíncrono |
-| Views, páginas e componentes | Apresentação e interação |
+| Outras fontes | backend/src/auth.ts | requireReadKey, requireIngestKey |
+| Outras fontes | backend/src/config.ts | — |
+| Outras fontes | backend/src/prisma.ts | — |
+| Outras fontes | backend/src/server.ts | parseDate, protocolJson |
+| Outras fontes | backend/src/sla.ts | isWorkingDay, calculateDueAt |
+| Testes | backend/src/triage.test.ts | — |
+| Outras fontes | backend/src/triage.ts | TriageInput, TriageRecommendation, TriageProvider, createSimulatedTriage, TriageDecisionError, decideTriage |
+| Outras fontes | backend/vitest.config.ts | — |
+| Outras fontes | src/App.css | — |
+| Outras fontes | src/App.jsx | DashboardContent, App |
+| Componentes | src/components/BarChart.jsx | BarChart |
+| Componentes | src/components/DonutChart.jsx | COLORS, DonutChart |
+| Componentes | src/components/ErrorScreen.jsx | ErrorScreen |
+| Componentes | src/components/FilterBar.jsx | FilterBar, changeMonth, changeDate |
+| Componentes | src/components/Header.jsx | Header |
+| Componentes | src/components/KPICards.jsx | AnimatedNumber, animate, KPICards |
+| Componentes | src/components/OtherItemsModal.jsx | OtherItemsModal |
+| Componentes | src/components/ProtocolDetailModal.jsx | ProtocolDetailModal |
+| Componentes | src/components/RankingBarChart.jsx | COLORS, RankingBarChart |
+| Componentes | src/components/RecentTable.jsx | PAGE_SIZE_OPTIONS, UNIDADE_COLORS, RecentTable, updateQuery, updatePageSize, exportCsv |
+| Componentes | src/components/UnitChart.jsx | UnitChart |
+| Outras fontes | src/context/DashboardContext.jsx | REFRESH_INTERVAL_MS, reducer, DashboardProvider |
+| Outras fontes | src/context/dashboardContextValue.js | DashboardContext |
+| Outras fontes | src/hooks/useDashboard.js | useDashboard |
+| Outras fontes | src/hooks/useKPIs.js | useKPIs |
+| Outras fontes | src/index.css | — |
+| Outras fontes | src/main.jsx | — |
+| Serviços | src/services/mockData.js | CANAIS, TIPOS, UNIDADES, INTERESSADOS, ASSUNTOS, randomItem, randomInt, padZero |
+| Serviços | src/services/protocolContract.js | PROTOCOL_CONTRACT_VERSION, PROTOCOL_FIELDS, extractProtocolRows, validateProtocolPayload, protocolToExportRow |
+| Serviços | src/services/sheetsService.js | SHEETS_URL, API_URL, API_KEY, DATA_URL, USE_MOCK, CACHE_KEY, findMatchingColumn, REQUIRED_COLUMNS |
+| Outras fontes | src/utils/chartData.js | aggregateTopN, aggregateObjectTopN |
+| Outras fontes | src/utils/filtering.js | toDayKey, monthRange, filterProtocols |
+| Testes | tests/chartData.test.js | — |
+| Testes | tests/protocolContract.test.js | — |
+| Outras fontes | vite.config.js | — |
 <!-- specsfy:documentator:end -->
