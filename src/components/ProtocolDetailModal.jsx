@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { createDemoRecommendation, decideDemoRecommendation } from '../services/triageDemo';
+import { buildDemoAuditTrail, createDemoRecommendation, decideDemoRecommendation } from '../services/triageDemo';
 
 export default function ProtocolDetailModal({ protocol, onClose }) {
   const [recommendation, setRecommendation] = useState(null);
@@ -34,6 +34,7 @@ export default function ProtocolDetailModal({ protocol, onClose }) {
             <div className="agent-summary"><div><span>Prioridade sugerida</span><strong>{recommendation.priority}</strong></div><div><span>Unidade sugerida</span><strong>{recommendation.suggestedUnit}</strong></div><div><span>Confiança</span><strong>{Math.round(recommendation.confidence * 100)}%</strong></div></div>
             <ul className="agent-reasons">{recommendation.rationale.map((reason) => <li key={reason}>{reason}</li>)}</ul>
             <p className="agent-alert">⚠ {recommendation.alerts[0]}</p>
+            <ol className="agent-audit" aria-label="Trilha demonstrativa do agente">{buildDemoAuditTrail(recommendation).map((step) => <li key={step.label} data-status={step.status}><span aria-hidden="true" />{step.label}</li>)}</ol>
             {recommendation.decision === 'PENDING' ? <div className="agent-actions"><button className="btn btn-primary" type="button" onClick={() => setRecommendation(decideDemoRecommendation(recommendation, 'APPROVED'))}>Aprovar simulação</button><button className="btn btn-ghost" type="button" onClick={() => setRecommendation(decideDemoRecommendation(recommendation, 'REJECTED'))}>Rejeitar</button></div> : <p className="agent-decision">Decisão simulada: <strong>{recommendation.decision === 'APPROVED' ? 'Aprovada' : 'Rejeitada'}</strong>. Nenhuma alteração foi aplicada.</p>}
           </>}
         </section>
