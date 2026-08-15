@@ -565,6 +565,17 @@
 .agent-summary span { color: var(--color-text-muted); font-size: var(--text-xs); }
 .agent-reasons { margin: var(--space-4) 0; color: var(--color-text-secondary); }
 .agent-alert, .agent-decision { padding: var(--space-3); border-radius: var(--radius-md); background: color-mix(in srgb, #f59e0b 13%, transparent); font-size: var(--text-sm); }
+.triage-center { padding: var(--space-6); }
+.triage-center-header { display: flex; justify-content: space-between; gap: var(--space-4); align-items: flex-start; }
+.triage-center-header h2 { margin: var(--space-1) 0; }
+.triage-center-header p { margin: 0; color: var(--color-text-muted); }
+.triage-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-top: var(--space-5); }
+.triage-metrics div { display: flex; flex-direction: column; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-secondary); }
+.triage-metrics strong { font-size: var(--text-2xl); color: var(--color-primary); }
+.triage-metrics span, .triage-queue-row span { color: var(--color-text-muted); font-size: var(--text-xs); }
+.triage-queue { margin-top: var(--space-5); }
+.triage-queue-row { display: grid; grid-template-columns: 1fr auto 7rem; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-top: 1px solid var(--color-border); }
+.triage-queue-row div { display: flex; flex-direction: column; }
 
 /* ============================================
    ERROR SCREEN

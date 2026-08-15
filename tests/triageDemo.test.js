@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createDemoRecommendation, decideDemoRecommendation } from '../src/services/triageDemo.js';
+import { createDemoRecommendation, decideDemoRecommendation, summarizeTriageQueue } from '../src/services/triageDemo.js';
 
 // SPECSFY: US-UI-001 FR-UI-001 NFR-UI-001 AC-UI-001
 test('gera recomendação simulada pendente e explicável', () => {
@@ -25,4 +25,18 @@ test('registra decisão local sem afirmar execução real', () => {
   assert.equal(decided.decision, 'APPROVED');
   assert.equal(decided.appliedToProtocol, false);
   assert.equal(decided.mode, 'DEMO');
+});
+
+// SPECSFY: US-UI-002 FR-UI-002 NFR-UI-001 AC-UI-004
+test('resume a fila simulada sem mutar protocolos', () => {
+  const protocols = [
+    { tipo_documento: 'Ouvidoria', assunto: 'Urgente', unidade: 'SEMAD' },
+    { tipo_documento: 'Ofício', assunto: '', unidade: 'SEPLAN' },
+  ];
+  const before = structuredClone(protocols);
+  const summary = summarizeTriageQueue(protocols);
+  assert.deepEqual(protocols, before);
+  assert.equal(summary.total, 2);
+  assert.equal(summary.highPriority, 1);
+  assert.equal(summary.averageConfidence, 74);
 });

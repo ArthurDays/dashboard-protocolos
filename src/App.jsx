@@ -7,6 +7,7 @@ import DonutChart from './components/DonutChart';
 import BarChart from './components/BarChart';
 import UnitChart from './components/UnitChart';
 import RecentTable from './components/RecentTable';
+import TriageCenter from './components/TriageCenter';
 import ErrorScreen from './components/ErrorScreen';
 import './App.css';
 
@@ -40,6 +41,7 @@ function DashboardContent() {
       <FilterBar />
       <main className="main-content">
         <KPICards />
+        <TriageCenter />
         <section className="charts-row">
           <DonutChart />
           <BarChart />

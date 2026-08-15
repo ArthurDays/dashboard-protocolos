@@ -28,7 +28,9 @@ modal, pagina a tabela, exporta CSV e usa cache em falha de rede. O backend
 também gera recomendações estruturadas de triagem, mantém seu histórico e
 registra aprovação ou rejeição auditável. Na interface, o detalhe do protocolo
 oferece uma demonstração local do agente com confiança, justificativas,
-alertas e decisão humana claramente identificada como simulação.
+alertas e decisão humana claramente identificada como simulação. A central de
+triagem resume a fila filtrada, prioridades sugeridas, confiança média e
+alertas para acompanhamento gerencial.
 
 ## Limites
 

@@ -19,3 +19,15 @@ export function decideDemoRecommendation(recommendation, decision) {
   if (recommendation.decision !== 'PENDING') return recommendation;
   return { ...recommendation, decision, decidedAt: new Date().toISOString(), appliedToProtocol: false };
 }
+
+export function summarizeTriageQueue(protocols) {
+  const items = protocols.map((protocol) => ({ protocol, recommendation: createDemoRecommendation(protocol) }));
+  const confidence = items.reduce((total, item) => total + item.recommendation.confidence, 0);
+  return {
+    total: items.length,
+    highPriority: items.filter((item) => ['HIGH', 'URGENT'].includes(item.recommendation.priority)).length,
+    averageConfidence: items.length ? Math.round((confidence / items.length) * 100) : 0,
+    alerts: items.reduce((total, item) => total + item.recommendation.alerts.length, 0),
+    items,
+  };
+}
