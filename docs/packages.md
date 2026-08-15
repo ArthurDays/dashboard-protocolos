@@ -5,15 +5,15 @@
 
 | Categoria | Escopo | Pacote | Versão | Finalidade | Fonte | GitHub |
 | --- | --- | --- | --- | --- | --- | --- |
-| Terceiro | produção | chart.js | ^4.5.1 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | produção | date-fns | ^4.4.0 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | produção | react | ^19.2.8 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | produção | react-chartjs-2 | ^5.3.1 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | produção | react-dom | ^19.2.8 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | desenvolvimento | @types/react | ^19.2.17 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | desenvolvimento | @types/react-dom | ^19.2.3 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | desenvolvimento | @vitejs/plugin-react | ^6.0.4 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | desenvolvimento | oxlint | ^1.75.0 | Finalidade não descrita nos metadados locais. |  | — |
+| Terceiro | produção | chart.js | ^4.5.1 | Simple HTML5 charts using the canvas element. | https://github.com/chartjs/Chart.js | https://github.com/chartjs/Chart.js |
+| Terceiro | produção | date-fns | ^4.4.0 | Modern JavaScript date utility library | https://github.com/date-fns/date-fns | https://github.com/date-fns/date-fns |
+| Terceiro | produção | react | ^19.2.8 | React is a JavaScript library for building user interfaces. | https://github.com/react/react | https://github.com/react/react |
+| Terceiro | produção | react-chartjs-2 | ^5.3.1 | React components for Chart.js | https://github.com/reactchartjs/react-chartjs-2 | https://github.com/reactchartjs/react-chartjs-2 |
+| Terceiro | produção | react-dom | ^19.2.8 | React package for working with the DOM. | https://github.com/react/react | https://github.com/react/react |
+| Terceiro | desenvolvimento | @types/react | ^19.2.17 | TypeScript definitions for react | https://github.com/DefinitelyTyped/DefinitelyTyped | https://github.com/DefinitelyTyped/DefinitelyTyped |
+| Terceiro | desenvolvimento | @types/react-dom | ^19.2.3 | TypeScript definitions for react-dom | https://github.com/DefinitelyTyped/DefinitelyTyped | https://github.com/DefinitelyTyped/DefinitelyTyped |
+| Terceiro | desenvolvimento | @vitejs/plugin-react | ^6.0.4 | The default Vite plugin for React projects | https://github.com/vitejs/vite-plugin-react | https://github.com/vitejs/vite-plugin-react |
+| Terceiro | desenvolvimento | oxlint | ^1.75.0 | Linter for the JavaScript Oxidation Compiler | https://github.com/oxc-project/oxc | https://github.com/oxc-project/oxc |
 | Terceiro | desenvolvimento | vite | ^8.2.0 | Native-ESM powered web dev build tool | https://github.com/vitejs/vite | https://github.com/vitejs/vite |
 | Terceiro | produção | @fastify/cors | ^10.0.2 | Fastify CORS | https://github.com/fastify/fastify-cors | https://github.com/fastify/fastify-cors |
 | Terceiro | produção | @fastify/helmet | ^13.0.2 | Important security headers for Fastify | https://github.com/fastify/fastify-helmet | https://github.com/fastify/fastify-helmet |
@@ -214,7 +214,7 @@
 | Terceiro | transitiva | vite | 8.2.1 | Native-ESM powered web dev build tool | https://github.com/vitejs/vite | https://github.com/vitejs/vite |
 | Terceiro | transitiva | vitest | 4.1.10 | Next generation testing framework powered by Vite | https://github.com/vitest-dev/vitest | https://github.com/vitest-dev/vitest |
 | Terceiro | transitiva | why-is-node-running | 2.3.0 | Node is running but you don't know why? why-is-node-running is here to help you. | https://github.com/mafintosh/why-is-node-running | https://github.com/mafintosh/why-is-node-running |
-| Terceiro | transitiva | @kurkle/color | 0.3.4 | Finalidade não descrita nos metadados locais. |  | — |
+| Terceiro | transitiva | @kurkle/color | 0.3.4 | css color parsing, manupulation and conversion | https://github.com/kurkle/color | https://github.com/kurkle/color |
 | Terceiro | transitiva | @oxlint/binding-android-arm-eabi | 1.78.0 | Finalidade não descrita nos metadados locais. |  | — |
 | Terceiro | transitiva | @oxlint/binding-android-arm64 | 1.78.0 | Finalidade não descrita nos metadados locais. |  | — |
 | Terceiro | transitiva | @oxlint/binding-darwin-arm64 | 1.78.0 | Finalidade não descrita nos metadados locais. |  | — |
@@ -233,16 +233,16 @@
 | Terceiro | transitiva | @oxlint/binding-openharmony-arm64 | 1.78.0 | Finalidade não descrita nos metadados locais. |  | — |
 | Terceiro | transitiva | @oxlint/binding-win32-arm64-msvc | 1.78.0 | Finalidade não descrita nos metadados locais. |  | — |
 | Terceiro | transitiva | @oxlint/binding-win32-ia32-msvc | 1.78.0 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | @oxlint/binding-win32-x64-msvc | 1.78.0 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | @types/react | 19.2.18 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | @types/react-dom | 19.2.4 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | @vitejs/plugin-react | 6.0.5 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | chart.js | 4.5.1 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | csstype | 3.2.3 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | date-fns | 4.4.0 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | oxlint | 1.78.0 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | react | 19.2.8 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | react-chartjs-2 | 5.3.1 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | react-dom | 19.2.8 | Finalidade não descrita nos metadados locais. |  | — |
-| Terceiro | transitiva | scheduler | 0.27.0 | Finalidade não descrita nos metadados locais. |  | — |
+| Terceiro | transitiva | @oxlint/binding-win32-x64-msvc | 1.78.0 | Linter for the JavaScript Oxidation Compiler | https://github.com/oxc-project/oxc | https://github.com/oxc-project/oxc |
+| Terceiro | transitiva | @types/react | 19.2.18 | TypeScript definitions for react | https://github.com/DefinitelyTyped/DefinitelyTyped | https://github.com/DefinitelyTyped/DefinitelyTyped |
+| Terceiro | transitiva | @types/react-dom | 19.2.4 | TypeScript definitions for react-dom | https://github.com/DefinitelyTyped/DefinitelyTyped | https://github.com/DefinitelyTyped/DefinitelyTyped |
+| Terceiro | transitiva | @vitejs/plugin-react | 6.0.5 | The default Vite plugin for React projects | https://github.com/vitejs/vite-plugin-react | https://github.com/vitejs/vite-plugin-react |
+| Terceiro | transitiva | chart.js | 4.5.1 | Simple HTML5 charts using the canvas element. | https://github.com/chartjs/Chart.js | https://github.com/chartjs/Chart.js |
+| Terceiro | transitiva | csstype | 3.2.3 | Strict TypeScript and Flow types for style based on MDN data | https://github.com/frenic/csstype | https://github.com/frenic/csstype |
+| Terceiro | transitiva | date-fns | 4.4.0 | Modern JavaScript date utility library | https://github.com/date-fns/date-fns | https://github.com/date-fns/date-fns |
+| Terceiro | transitiva | oxlint | 1.78.0 | Linter for the JavaScript Oxidation Compiler | https://github.com/oxc-project/oxc | https://github.com/oxc-project/oxc |
+| Terceiro | transitiva | react | 19.2.8 | React is a JavaScript library for building user interfaces. | https://github.com/react/react | https://github.com/react/react |
+| Terceiro | transitiva | react-chartjs-2 | 5.3.1 | React components for Chart.js | https://github.com/reactchartjs/react-chartjs-2 | https://github.com/reactchartjs/react-chartjs-2 |
+| Terceiro | transitiva | react-dom | 19.2.8 | React package for working with the DOM. | https://github.com/react/react | https://github.com/react/react |
+| Terceiro | transitiva | scheduler | 0.27.0 | Cooperative scheduler for the browser environment. | https://github.com/facebook/react | https://github.com/facebook/react |
 <!-- specsfy:documentator:end -->

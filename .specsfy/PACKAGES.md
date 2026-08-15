@@ -5,15 +5,15 @@
 
 | Gerenciador | Escopo | Pacote | Versão | Finalidade | Fonte |
 | --- | --- | --- | --- | --- | --- |
-| npm | produção | chart.js | ^4.5.1 | Finalidade não descrita nos metadados locais. |  |
-| npm | produção | date-fns | ^4.4.0 | Finalidade não descrita nos metadados locais. |  |
-| npm | produção | react | ^19.2.8 | Finalidade não descrita nos metadados locais. |  |
-| npm | produção | react-chartjs-2 | ^5.3.1 | Finalidade não descrita nos metadados locais. |  |
-| npm | produção | react-dom | ^19.2.8 | Finalidade não descrita nos metadados locais. |  |
-| npm | desenvolvimento | @types/react | ^19.2.17 | Finalidade não descrita nos metadados locais. |  |
-| npm | desenvolvimento | @types/react-dom | ^19.2.3 | Finalidade não descrita nos metadados locais. |  |
-| npm | desenvolvimento | @vitejs/plugin-react | ^6.0.4 | Finalidade não descrita nos metadados locais. |  |
-| npm | desenvolvimento | oxlint | ^1.75.0 | Finalidade não descrita nos metadados locais. |  |
+| npm | produção | chart.js | ^4.5.1 | Simple HTML5 charts using the canvas element. | https://github.com/chartjs/Chart.js |
+| npm | produção | date-fns | ^4.4.0 | Modern JavaScript date utility library | https://github.com/date-fns/date-fns |
+| npm | produção | react | ^19.2.8 | React is a JavaScript library for building user interfaces. | https://github.com/react/react |
+| npm | produção | react-chartjs-2 | ^5.3.1 | React components for Chart.js | https://github.com/reactchartjs/react-chartjs-2 |
+| npm | produção | react-dom | ^19.2.8 | React package for working with the DOM. | https://github.com/react/react |
+| npm | desenvolvimento | @types/react | ^19.2.17 | TypeScript definitions for react | https://github.com/DefinitelyTyped/DefinitelyTyped |
+| npm | desenvolvimento | @types/react-dom | ^19.2.3 | TypeScript definitions for react-dom | https://github.com/DefinitelyTyped/DefinitelyTyped |
+| npm | desenvolvimento | @vitejs/plugin-react | ^6.0.4 | The default Vite plugin for React projects | https://github.com/vitejs/vite-plugin-react |
+| npm | desenvolvimento | oxlint | ^1.75.0 | Linter for the JavaScript Oxidation Compiler | https://github.com/oxc-project/oxc |
 | npm | desenvolvimento | vite | ^8.2.0 | Native-ESM powered web dev build tool | https://github.com/vitejs/vite |
 | npm | produção | @fastify/cors | ^10.0.2 | Fastify CORS | https://github.com/fastify/fastify-cors |
 | npm | produção | @fastify/helmet | ^13.0.2 | Important security headers for Fastify | https://github.com/fastify/fastify-helmet |
@@ -214,7 +214,7 @@
 | npm | transitiva | vite | 8.2.1 | Native-ESM powered web dev build tool | https://github.com/vitejs/vite |
 | npm | transitiva | vitest | 4.1.10 | Next generation testing framework powered by Vite | https://github.com/vitest-dev/vitest |
 | npm | transitiva | why-is-node-running | 2.3.0 | Node is running but you don't know why? why-is-node-running is here to help you. | https://github.com/mafintosh/why-is-node-running |
-| npm | transitiva | @kurkle/color | 0.3.4 | Finalidade não descrita nos metadados locais. |  |
+| npm | transitiva | @kurkle/color | 0.3.4 | css color parsing, manupulation and conversion | https://github.com/kurkle/color |
 | npm | transitiva | @oxlint/binding-android-arm-eabi | 1.78.0 | Finalidade não descrita nos metadados locais. |  |
 | npm | transitiva | @oxlint/binding-android-arm64 | 1.78.0 | Finalidade não descrita nos metadados locais. |  |
 | npm | transitiva | @oxlint/binding-darwin-arm64 | 1.78.0 | Finalidade não descrita nos metadados locais. |  |
@@ -233,16 +233,16 @@
 | npm | transitiva | @oxlint/binding-openharmony-arm64 | 1.78.0 | Finalidade não descrita nos metadados locais. |  |
 | npm | transitiva | @oxlint/binding-win32-arm64-msvc | 1.78.0 | Finalidade não descrita nos metadados locais. |  |
 | npm | transitiva | @oxlint/binding-win32-ia32-msvc | 1.78.0 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | @oxlint/binding-win32-x64-msvc | 1.78.0 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | @types/react | 19.2.18 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | @types/react-dom | 19.2.4 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | @vitejs/plugin-react | 6.0.5 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | chart.js | 4.5.1 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | csstype | 3.2.3 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | date-fns | 4.4.0 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | oxlint | 1.78.0 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | react | 19.2.8 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | react-chartjs-2 | 5.3.1 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | react-dom | 19.2.8 | Finalidade não descrita nos metadados locais. |  |
-| npm | transitiva | scheduler | 0.27.0 | Finalidade não descrita nos metadados locais. |  |
+| npm | transitiva | @oxlint/binding-win32-x64-msvc | 1.78.0 | Linter for the JavaScript Oxidation Compiler | https://github.com/oxc-project/oxc |
+| npm | transitiva | @types/react | 19.2.18 | TypeScript definitions for react | https://github.com/DefinitelyTyped/DefinitelyTyped |
+| npm | transitiva | @types/react-dom | 19.2.4 | TypeScript definitions for react-dom | https://github.com/DefinitelyTyped/DefinitelyTyped |
+| npm | transitiva | @vitejs/plugin-react | 6.0.5 | The default Vite plugin for React projects | https://github.com/vitejs/vite-plugin-react |
+| npm | transitiva | chart.js | 4.5.1 | Simple HTML5 charts using the canvas element. | https://github.com/chartjs/Chart.js |
+| npm | transitiva | csstype | 3.2.3 | Strict TypeScript and Flow types for style based on MDN data | https://github.com/frenic/csstype |
+| npm | transitiva | date-fns | 4.4.0 | Modern JavaScript date utility library | https://github.com/date-fns/date-fns |
+| npm | transitiva | oxlint | 1.78.0 | Linter for the JavaScript Oxidation Compiler | https://github.com/oxc-project/oxc |
+| npm | transitiva | react | 19.2.8 | React is a JavaScript library for building user interfaces. | https://github.com/react/react |
+| npm | transitiva | react-chartjs-2 | 5.3.1 | React components for Chart.js | https://github.com/reactchartjs/react-chartjs-2 |
+| npm | transitiva | react-dom | 19.2.8 | React package for working with the DOM. | https://github.com/react/react |
+| npm | transitiva | scheduler | 0.27.0 | Cooperative scheduler for the browser environment. | https://github.com/facebook/react |
 <!-- specsfy:documentator:end -->
