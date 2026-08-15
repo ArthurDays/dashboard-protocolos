@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createDemoRecommendation, decideDemoRecommendation, summarizeTriageQueue } from '../src/services/triageDemo.js';
+import { buildDemoAuditTrail, createDemoRecommendation, decideDemoRecommendation, summarizeTriageQueue } from '../src/services/triageDemo.js';
 
 // SPECSFY: US-UI-001 FR-UI-001 NFR-UI-001 AC-UI-001
 test('gera recomendação simulada pendente e explicável', () => {
@@ -39,4 +39,12 @@ test('resume a fila simulada sem mutar protocolos', () => {
   assert.equal(summary.total, 2);
   assert.equal(summary.highPriority, 1);
   assert.equal(summary.averageConfidence, 74);
+});
+
+// SPECSFY: US-UI-003 FR-UI-003 NFR-UI-001 AC-UI-005
+test('expõe uma trilha de auditoria sem inventar execução', () => {
+  const approved = decideDemoRecommendation(createDemoRecommendation({ tipo_documento: 'Ofício', unidade: 'SEMAD' }), 'APPROVED');
+  const trail = buildDemoAuditTrail(approved);
+  assert.deepEqual(trail.map((step) => step.status), ['DONE', 'DONE', 'DONE', 'NOT_APPLIED']);
+  assert.match(trail.at(-1).label, /não aplicada/i);
 });

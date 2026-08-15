@@ -31,3 +31,13 @@ export function summarizeTriageQueue(protocols) {
     items,
   };
 }
+
+export function buildDemoAuditTrail(recommendation) {
+  const decided = recommendation.decision !== 'PENDING';
+  return [
+    { status: 'DONE', label: 'Protocolo analisado como dado não confiável' },
+    { status: 'DONE', label: `Recomendação explicável gerada (${Math.round(recommendation.confidence * 100)}% de confiança)` },
+    { status: decided ? 'DONE' : 'PENDING', label: decided ? `Revisão humana: ${recommendation.decision === 'APPROVED' ? 'aprovada' : 'rejeitada'}` : 'Aguardando revisão humana' },
+    { status: 'NOT_APPLIED', label: 'Alteração não aplicada ao protocolo' },
+  ];
+}

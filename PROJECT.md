@@ -31,6 +31,8 @@ oferece uma demonstração local do agente com confiança, justificativas,
 alertas e decisão humana claramente identificada como simulação. A central de
 triagem resume a fila filtrada, prioridades sugeridas, confiança média e
 alertas para acompanhamento gerencial.
+O detalhe também apresenta uma trilha demonstrativa das etapas do agente,
+incluindo a confirmação explícita de que a recomendação não foi aplicada.
 
 ## Limites
 

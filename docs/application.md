@@ -40,7 +40,7 @@ Relação: relaciona cada arquivo observado à sua superfície.
 | Serviços | src/services/mockData.js | CANAIS, TIPOS, UNIDADES, INTERESSADOS, ASSUNTOS, randomItem, randomInt, padZero |
 | Serviços | src/services/protocolContract.js | PROTOCOL_CONTRACT_VERSION, PROTOCOL_FIELDS, extractProtocolRows, validateProtocolPayload, protocolToExportRow |
 | Serviços | src/services/sheetsService.js | SHEETS_URL, API_URL, API_KEY, DATA_URL, USE_MOCK, CACHE_KEY, findMatchingColumn, REQUIRED_COLUMNS |
-| Serviços | src/services/triageDemo.js | createDemoRecommendation, decideDemoRecommendation, summarizeTriageQueue |
+| Serviços | src/services/triageDemo.js | createDemoRecommendation, decideDemoRecommendation, summarizeTriageQueue, buildDemoAuditTrail |
 | Outras fontes | src/utils/chartData.js | aggregateTopN, aggregateObjectTopN |
 | Outras fontes | src/utils/filtering.js | toDayKey, monthRange, filterProtocols |
 | Testes | tests/chartData.test.js | — |
