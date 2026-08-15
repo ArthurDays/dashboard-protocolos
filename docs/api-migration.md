@@ -58,6 +58,7 @@ resultado de cada item do lote.
 5. Migrar ingestão para n8n, Python ou RPA.
 6. Desativar leitura direta da planilha após observação.
 
-No protótipo, o frontend envia `VITE_PROTOCOLS_API_KEY` no header `x-api-key`.
+O frontend não incorpora credenciais. Em modo API, um proxy institucional deve
+autenticar a sessão e acrescentar a credencial de leitura no servidor.
 Em produção, substitua essa chave exposta no bundle por sessão institucional,
 OIDC ou proxy backend-for-frontend.

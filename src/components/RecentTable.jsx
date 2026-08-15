@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useDashboard } from '../hooks/useDashboard';
-import { protocolToExportRow } from '../services/protocolContract';
+import { escapeCsvCell, protocolToExportRow } from '../services/protocolContract';
 import ProtocolDetailModal from './ProtocolDetailModal';
 
 const PAGE_SIZE_OPTIONS = [10, 25, 50];
@@ -35,8 +35,7 @@ export default function RecentTable() {
     const rows = searched.map(protocolToExportRow);
     if (!rows.length) return;
     const headers = Object.keys(rows[0]);
-    const escape = (value) => `"${String(value).replaceAll('"', '""')}"`;
-    const csv = `\uFEFF${[headers, ...rows.map((row) => headers.map((header) => row[header]))].map((row) => row.map(escape).join(';')).join('\n')}`;
+    const csv = `\uFEFF${[headers, ...rows.map((row) => headers.map((header) => row[header]))].map((row) => row.map(escapeCsvCell).join(';')).join('\n')}`;
     const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }));
     const anchor = document.createElement('a');
     anchor.href = url;

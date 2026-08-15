@@ -13,7 +13,8 @@ Abra `http://127.0.0.1:5173/`.
 
 ## Fonte operacional confirmada
 
-O catálogo atual é a planilha [Caderno de Entrada 2026](https://docs.google.com/spreadsheets/d/1KU6gNNDxmpBtjXHSrunT_yk6za0kYetEpTBwBOWKnak/edit).
+O catálogo operacional fica em uma planilha institucional restrita. O
+identificador e a URL reais não são publicados neste repositório.
 Ela possui abas mensais e é lida pelo `google-apps-script/Code.gs`, que retorna
 um payload consolidado com `_aba` e `Mes_Origem`. Não copie registros da
 planilha para o repositório.
@@ -114,7 +115,7 @@ Auditoria realizada em 14/08/2026 no repositório GitHub do projeto:
   demonstrativos;
 - os nomes, assuntos e números presentes em `src/services/mockData.js` são
   dados sintéticos para desenvolvimento, não uma cópia da planilha;
-- `POSTGRES_PASSWORD=protocolos` e `change-me-*` são placeholders locais e
+- As credenciais do PostgreSQL e da API são obrigatórias no arquivo `.env` e
   devem ser substituídos por valores fortes antes de qualquer implantação;
 - o Secret Scanning do GitHub não está habilitado; a verificação foi realizada
   por busca de padrões de credenciais no conteúdo atual e no histórico

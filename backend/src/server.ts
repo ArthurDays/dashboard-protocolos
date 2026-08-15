@@ -3,13 +3,14 @@ import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
 import { createHash } from 'node:crypto';
-import { config } from './config.js';
+import { assertSecureConfig, config } from './config.js';
 import { requireIngestKey, requireReadKey } from './auth.js';
 import { prisma } from './prisma.js';
 import { Priority, ProtocolStatus, TriageDecision as PrismaTriageDecision } from '@prisma/client';
 import { calculateDueAt } from './sla.js';
 import { createSimulatedTriage } from './triage.js';
 
+assertSecureConfig();
 const app = Fastify({ logger: { level: process.env.LOG_LEVEL || 'info' } });
 const metrics = { startedAt: new Date().toISOString(), requests: 0, responses: 0, errors: 0 };
 
@@ -103,7 +104,7 @@ app.get('/api/protocolos/:id', { preHandler: requireReadKey }, async (request, r
   return protocolJson(protocol);
 });
 
-app.post('/api/protocolos/:id/triagens', { preHandler: requireReadKey }, async (request, reply) => {
+app.post('/api/protocolos/:id/triagens', { preHandler: requireIngestKey }, async (request, reply) => {
   const { id } = request.params as { id: string };
   const protocol = await prisma.protocol.findUnique({ where: { id }, include: { unit: true } });
   if (!protocol) return reply.code(404).send({ error: 'not_found', message: 'Protocolo não encontrado.' });
