@@ -75,13 +75,14 @@ para o fluxo mês → período → tabela → detalhe → CSV.
 <!-- specsfy:documentator:start -->
 ## Resumo
 
-- Arquivos de teste: 3.
+- Arquivos de teste: 4.
 - Runner: não identificado.
-- Scripts: dev: vite; build: vite build; test: node --test; lint: oxlint; preview: vite preview.
+- Scripts: dev: vite; build: vite build; test: node --test tests/*.test.js; lint: oxlint; preview: vite preview.
 
 | Arquivo |
 | --- |
 | backend\src\triage.test.ts |
 | tests\chartData.test.js |
 | tests\protocolContract.test.js |
+| tests\triageDemo.test.js |
 <!-- specsfy:documentator:end -->

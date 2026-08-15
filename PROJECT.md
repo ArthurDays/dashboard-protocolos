@@ -26,7 +26,9 @@ O painel carrega JSON consolidado, normaliza registros, calcula KPIs, mantém
 filtros client-side, exibe gráficos Top 5 + Outros, permite detalhamento em
 modal, pagina a tabela, exporta CSV e usa cache em falha de rede. O backend
 também gera recomendações estruturadas de triagem, mantém seu histórico e
-registra aprovação ou rejeição auditável.
+registra aprovação ou rejeição auditável. Na interface, o detalhe do protocolo
+oferece uma demonstração local do agente com confiança, justificativas,
+alertas e decisão humana claramente identificada como simulação.
 
 ## Limites
 

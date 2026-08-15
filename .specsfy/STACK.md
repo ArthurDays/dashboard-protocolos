@@ -13,6 +13,7 @@ uma. Preserve decisões humanas nas seções livres deste arquivo.
 | Infraestrutura | Containers | arquivo Compose |
 | Biblioteca | React | `package.json` |
 | Build | Vite | `package.json`, `vite.config.js` |
+| Testes frontend | Node Test Runner (escopo `tests/*.test.js`) | `package.json` (`test`) |
 | Gráficos | Chart.js/react-chartjs-2 | `package.json`, `src/components/` |
 | API | Fastify + TypeScript | `backend/package.json`, `backend/src/server.ts` |
 | ORM | Prisma | `backend/package.json`, `backend/prisma/schema.prisma` |

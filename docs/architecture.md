@@ -67,8 +67,8 @@ explica a composição de `Outros` sem poluir a visão principal.
 
 | Tipo | Quantidade |
 | --- | --- |
-| Código | 35 |
-| Testes | 3 |
+| Código | 37 |
+| Testes | 4 |
 
 ## Diagramas
 
